@@ -9,7 +9,7 @@ def generateFragments(fastaFile,ssFile,fragSize):
 
 #Returns an array of [phi, psi, omega] for fragment starting at fragmentNumber
 def getFragment(fragSize,fragmentNumber):
-    fragmentAngles
+    fragmentAngles = []
     increment = (fragSize+3)
     lineNumber = increment*(fragmentNumber-1)+1
     with open('fragments.txt') as f:
@@ -18,11 +18,10 @@ def getFragment(fragSize,fragmentNumber):
         for i in range(0,increment-3):
             data = f.readline().split()
             print(str(data[5])+" "+str(data[6])+" "+str(data[7]))
-            fragmentAngles = [data[5],data[6],data[7]]
+            fragmentAngles.append([data[5],data[6],data[7]])
         f.close()
         return fragmentAngles
 
 #Test code
 generateFragments('target.fasta','target.ss',5)
 getFragment(5,100)
-    
